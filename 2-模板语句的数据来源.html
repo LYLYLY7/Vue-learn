@@ -23,10 +23,25 @@
 			 这是Vue框架自己搞的一套语法，别的框架看不懂的，浏览器也是不能够识别的。Vue框架自己是能够看懂的。这种语法在Vue框架中被称为: 模板语法中的插值语法。
 			
 		 */
-		template: '<h1>最近火爆的电视剧是{{name}}，它的上映时间是{{releaseTime}}</h1>',
+		template: `<h1>最近火爆的电视剧是{{ name }}，它的上映时间是{{ releaseTime }}。主角是{{ lead.name }}
+		，年龄是{{ lead.age }}岁。其他演员包括：{{ actors[0].name }}({{ actors[0].age }})岁、{{actors[1].name}}({{actors[1].age}}岁)</h1>>`,
 		data: {
 			name: '《狂飙》',
-			releaseTime: '2023年1月14日'
+			releaseTime: '2023年1月14日',
+			lead: {
+				name: '高启强',
+				age: 40
+			},
+			actors: [
+				{
+					name: '安欣',
+					age: 40
+				},
+				{
+					name: '高启兰',
+					age: 30
+				}
+			]
 		}
 	}).$mount("#app")
 </script>
