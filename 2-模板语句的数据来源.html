@@ -24,7 +24,8 @@
 			
 		 */
 		template: `<h1>最近火爆的电视剧是{{ name }}，它的上映时间是{{ releaseTime }}。主角是{{ lead.name }}
-		，年龄是{{ lead.age }}岁。其他演员包括：{{ actors[0].name }}({{ actors[0].age }})岁、{{actors[1].name}}({{actors[1].age}}岁)</h1>>`,
+		，年龄是{{ lead.age }}岁。其他演员包括：{{ actors[0].name }}({{ actors[0].age }})岁、{{ actors[1].name }}
+		({{ actors[1].age }}岁)</h1>`,
 		data: {
 			name: '《狂飙》',
 			releaseTime: '2023年1月14日',
