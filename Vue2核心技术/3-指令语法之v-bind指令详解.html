@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>v-bind指令详解（它是一个负责动态绑定的指令）</title>
 	<!--安装Vue-->
-	<script src="../js/vue.js"></script>
+	<script src="./js/vue.js"></script>
 </head>
 <body>
 <!--
@@ -35,7 +35,7 @@
 	<!--	注意：原则上v-bind指令后面的这个参数名可以随便写。-->
 	<!--	虽然可以随便写，但是大部分情况下，这个参数名还是需要写成该HTML标签支持的属性名，这样才会有意义。-->
 	<span v-bind:xyz="msg"></span>
-	<!--这个表达式带有单引号，但这个'msg'就不是变凉了，是常量。-->
+	<!--这个表达式带有单引号，但这个'msg'就不是变量了，是常量。-->
 	<span v-bind:xyz="'msg'"></span>
 	
 	<!--	v-bind 实战-->
