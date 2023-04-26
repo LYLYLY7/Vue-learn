@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-bind指令详解（它是一个负责动态绑定的指令）</title>
+	<!--安装Vue-->
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+<!--
+	v-bind指令详解
+		1. 这个指令是干啥的？
+			它可以让HTML标签的某个属性的值产生动态的效果。
+		2.	v-bind指令的语法格式
+			<HTML标签 v-bind:参数="表达式"></HTML标签>
+		3.	v-bind指令的编译原理？
+			编译前：
+			<HTML标签 v-bind:参数="表达式"></HTML标签>
+			编译后：
+			<HTML标签 参数="表达式的执行结果"></HTML标签>
+			注意两项：
+				第一	在编译的时候v-bind后面的“参数名”会被编译为HTML标签的“属性名”
+				第二	表达式会关联data,当data发生改变之后，表达式的执行结果就会发生变化。
+				所以，连带的就会产生动态效果。
+		4.	v-bind因为很常用，所以Vue框架对该指令提供了一种间歇方式：
+			只是针对v-bind提供了以下简写方式：
+				<img :src="imgPath">	(就是省略v-bind，只需要写：即可)
+		5. 什么时候使用插值语法？什么时候使用指令语法?
+			凡是标签体当中的内容要想动态，需要使用插值语法。
+			凡是标签体的属性想要动态，就要用指令语法。
+-->
+<!--准备一个容器-->
+<div id="app">
+	<!--	注意：以下代码中 msg是变量名-->
+	<!--	注意：原则上v-bind指令后面的这个参数名可以随便写。-->
+	<!--	虽然可以随便写，但是大部分情况下，这个参数名还是需要写成该HTML标签支持的属性名，这样才会有意义。-->
+	<span v-bind:xyz="msg"></span>
+	<!--这个表达式带有单引号，但这个'msg'就不是变凉了，是常量。-->
+	<span v-bind:xyz="'msg'"></span>
+	
+	<!--	v-bind 实战-->
+	<img src="./images/1.jpg" alt=""><br>
+	<img v-bind:src="imagesPath" alt=""><br>
+	<!--简写形式-->
+	<img :src="imagesPath" alt=""><br>
+	<!--	普通文本框-->
+	<label>
+		<input type="text" name="username" value="张三">
+	</label><br>
+	<!--以下文本框可以让value这个数据变成动态的。这个就是典型的动态数据绑定。-->
+	<label>
+		<input type="text" name="username" :value="username">
+	</label><br>
+	
+	<!--	使用v-bind也可以让超链接的地址变成动态-->
+	<a href="https://baidu.com">链接</a><br>
+	<a :href='url'>v-bind链接</a><br>
+	
+	<!--不能采用以下写法吗？-->
+	<!--
+		不能这样，报错了，信息如下：
+		ref="{{url}}": Interpolation inside attributes has been removed. Use v-bind or the colon shorthand instead. For example, instead of <div id="{{ val }}">, use <div :id="val">.
+
+		属性内部插值这种语法已经被废除了，（可能Vue在以前的版本中是支持这种写法的，但是现在不允许了。）
+		请用v-bind或者冒号速记来代替
+		请使用<div id="{{ val }}">来代替 <div :id="val">
+	-->
+	<!--<a href="{{url}}">链接</a>-->
+
+</div>
+
+<script>
+	new Vue({
+		el: "#app",
+		data: {
+			msg: "你好",
+			bool: true,
+			imagesPath: "./images/1.jpg",
+			username: "张三",
+			url: 'https://baidu.com'
+		}
+	})
+</script>
+</body>
+</html>
